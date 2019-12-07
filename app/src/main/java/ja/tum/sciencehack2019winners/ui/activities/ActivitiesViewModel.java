@@ -1,16 +1,16 @@
-package ja.tum.sciencehack2019winners.ui.notifications;
+package ja.tum.sciencehack2019winners.ui.activities;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class NotificationsViewModel extends ViewModel {
+public class ActivitiesViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public NotificationsViewModel() {
+    public ActivitiesViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is notifications fragment");
+        mText.setValue("This is activities fragment");
     }
 
     public LiveData<String> getText() {

@@ -1,4 +1,4 @@
-package ja.tum.sciencehack2019winners.ui.notifications;
+package ja.tum.sciencehack2019winners.ui.activities;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import ja.tum.sciencehack2019winners.R;
 
-public class NotificationsFragment extends Fragment {
+public class ActivitiesFragment extends Fragment {
 
-    private NotificationsViewModel notificationsViewModel;
+    private ActivitiesViewModel activitiesViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        notificationsViewModel =
-                ViewModelProviders.of(this).get(NotificationsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_notifications, container, false);
-        final TextView textView = root.findViewById(R.id.text_notifications);
-        notificationsViewModel.getText().observe(this, new Observer<String>() {
+        activitiesViewModel =
+                ViewModelProviders.of(this).get(ActivitiesViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_activities, container, false);
+        final TextView textView = root.findViewById(R.id.text_activities);
+        activitiesViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

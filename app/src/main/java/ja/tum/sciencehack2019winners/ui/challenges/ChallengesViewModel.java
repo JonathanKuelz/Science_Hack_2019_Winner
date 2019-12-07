@@ -1,16 +1,16 @@
-package ja.tum.sciencehack2019winners.ui.dashboard;
+package ja.tum.sciencehack2019winners.ui.challenges;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class DashboardViewModel extends ViewModel {
+public class ChallengesViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public DashboardViewModel() {
+    public ChallengesViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+        mText.setValue("This is challenges fragment");
     }
 
     public LiveData<String> getText() {

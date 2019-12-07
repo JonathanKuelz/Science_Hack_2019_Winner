@@ -1,4 +1,4 @@
-package ja.tum.sciencehack2019winners.ui.challenges.stats;
+package ja.tum.sciencehack2019winners.ui.challenges;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,8 +22,8 @@ public class ChallengesFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         challengesViewModel =
                 ViewModelProviders.of(this).get(ChallengesViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
+        View root = inflater.inflate(R.layout.fragment_challenges, container, false);
+        final TextView textView = root.findViewById(R.id.text_challenges);
         challengesViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {

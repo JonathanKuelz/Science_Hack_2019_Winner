@@ -7,14 +7,14 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_activities"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard" />
+        android:title="@string/title_activities" />
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_challenges"
         android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" />
+        android:title="@string/title_challenges" />
 
     <item
         android:id="@+id/navigation_stats"
@@ -22,8 +22,8 @@
         android:title="@string/title_stats" />
 
     <item
-        android:id="@+id/navigation_challenges"
+        android:id="@+id/navigation_profile"
         android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_challenges" />
+        android:title="@string/title_profile" />
 
 </menu>

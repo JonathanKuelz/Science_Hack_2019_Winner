@@ -1,16 +1,16 @@
-package ja.tum.sciencehack2019winners.ui.challenges.stats;
+package ja.tum.sciencehack2019winners.ui.profile;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ChallengesViewModel extends ViewModel {
+public class ProfileViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public ChallengesViewModel() {
+    public ProfileViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is challenges fragment");
+        mText.setValue("This is profile fragment");
     }
 
     public LiveData<String> getText() {
