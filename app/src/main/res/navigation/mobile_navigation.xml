@@ -12,14 +12,24 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
+        android:id="@+id/navigation_challenges"
+        android:name="ja.tum.sciencehack2019winners.ui.challenges.stats.ChallengesFragment"
+        android:label="@string/title_challenges"
+        tools:layout="@layout/fragment_home" />
+    <fragment
         android:id="@+id/navigation_dashboard"
         android:name="ja.tum.sciencehack2019winners.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:label="@string/title_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="ja.tum.sciencehack2019winners.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_stats"
+        android:name="ja.tum.sciencehack2019winners.ui.stats.StatsFragment"
+        android:label="@string/title_stats"
+        tools:layout="@layout/fragment_stats" />
 </navigation>
