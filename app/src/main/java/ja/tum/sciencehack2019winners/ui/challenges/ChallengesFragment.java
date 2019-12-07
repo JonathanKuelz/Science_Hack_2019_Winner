@@ -4,12 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.webkit.WebView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import ja.tum.sciencehack2019winners.R;
@@ -23,13 +21,10 @@ public class ChallengesFragment extends Fragment {
         challengesViewModel =
                 ViewModelProviders.of(this).get(ChallengesViewModel.class);
         View root = inflater.inflate(R.layout.fragment_challenges, container, false);
-        final TextView textView = root.findViewById(R.id.text_challenges);
-        challengesViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
+        WebView webView = (WebView) root.findViewById(R.id.challengesWebView);
+        webView.loadUrl("https://sciencehackbest.herokuapp.com/challenges");
+
         return root;
     }
 }
