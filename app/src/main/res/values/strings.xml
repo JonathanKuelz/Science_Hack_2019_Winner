@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">ScienceHack2010WInner</string>
-    <string name="tab_text_1">Egal wie cool du bist...</string>
-    <string name="tab_text_2">Manuel ist cooler ;)</string>
+    <string name="app_name">ScienceHack2019Winners</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

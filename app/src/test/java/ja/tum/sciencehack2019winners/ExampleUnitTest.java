@@ -1,4 +1,4 @@
-package ja.tum.sciencehack2010winner;
+package ja.tum.sciencehack2019winners;
 
 import org.junit.Test;
 

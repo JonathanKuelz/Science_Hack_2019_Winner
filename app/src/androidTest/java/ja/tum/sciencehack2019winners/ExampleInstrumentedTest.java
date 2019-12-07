@@ -1,4 +1,4 @@
-package ja.tum.sciencehack2010winner;
+package ja.tum.sciencehack2019winners;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("ja.tum.sciencehack2010winner", appContext.getPackageName());
+        assertEquals("ja.tum.sciencehack2019winners", appContext.getPackageName());
     }
 }
