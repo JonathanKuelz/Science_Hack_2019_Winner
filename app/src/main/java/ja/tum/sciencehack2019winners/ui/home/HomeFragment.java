@@ -27,6 +27,7 @@ public class HomeFragment extends Fragment {
 
         WebView webView = (WebView) root.findViewById(R.id.homeWebView);
         webView.loadUrl("https://sciencehackbest.herokuapp.com/");
+        webView.getSettings().setJavaScriptEnabled(true);
 
         return root;
     }
