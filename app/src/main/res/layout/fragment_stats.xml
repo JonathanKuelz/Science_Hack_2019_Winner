@@ -70,20 +70,72 @@
                 android:padding="10dp" />
         </androidx.cardview.widget.CardView>
 
-        <net.cachapa.expandablelayout.ExpandableLayout
-            android:id="@+id/expandable_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:el_duration="1000"
-            app:el_expanded="true"
-            app:el_parallax="0.5">
+                Expandable Views
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Fixed height" />
-        </net.cachapa.expandablelayout.ExpandableLayout>
+        <com.alespero.expandablecardview.ExpandableCardView
+            android:id="@+id/expandable_transport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            app:expandOnClick="true"
+            app:inner_view="@layout/fragment_stats_transportation"
+            app:title="Transportation" />
+
+        <com.alespero.expandablecardview.ExpandableCardView
+            android:id="@+id/expandable_food"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            app:expandOnClick="true"
+            app:inner_view="@layout/fragment_stats_transportation"
+            app:title="Food" />
+
+        <com.alespero.expandablecardview.ExpandableCardView
+            android:id="@+id/expandable_consume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            app:expandOnClick="true"
+            app:inner_view="@layout/fragment_stats_transportation"
+            app:title="Consume" />
+
+        <com.alespero.expandablecardview.ExpandableCardView
+            android:id="@+id/expandable_devices"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            app:expandOnClick="true"
+            app:inner_view="@layout/fragment_stats_transportation"
+            app:title="Streaming / devices" />
+
+        <com.alespero.expandablecardview.ExpandableCardView
+            android:id="@+id/expandable_baseline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            app:expandOnClick="true"
+            app:inner_view="@layout/fragment_stats_transportation"
+            app:title="Baseline Consumption" />
+
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
 
     </LinearLayout>

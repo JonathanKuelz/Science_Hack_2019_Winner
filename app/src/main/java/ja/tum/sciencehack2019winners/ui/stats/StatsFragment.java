@@ -2,19 +2,14 @@ package ja.tum.sciencehack2019winners.ui.stats;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,11 +18,9 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import ja.tum.sciencehack2019winners.MainActivity;
 import ja.tum.sciencehack2019winners.R;
 import lecho.lib.hellocharts.model.Axis;
 import lecho.lib.hellocharts.model.AxisValue;
@@ -36,7 +29,7 @@ import lecho.lib.hellocharts.model.LineChartData;
 import lecho.lib.hellocharts.model.PieChartData;
 import lecho.lib.hellocharts.model.PointValue;
 import lecho.lib.hellocharts.model.SliceValue;
-import lecho.lib.hellocharts.util.ChartUtils;
+import lecho.lib.hellocharts.model.Viewport;
 import lecho.lib.hellocharts.view.LineChartView;
 import lecho.lib.hellocharts.view.PieChartView;
 
@@ -51,11 +44,24 @@ public class StatsFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_stats, container, false);
 
-        populatePieChart(root);
-        String json_string = loadJSONFromAsset(getActivity(), "CO2_Daten/transportation_emission.json");
+
+        // Populate summary
+        populatePieChartSummary(root);
+        String json_string = loadJSONFromAsset(getActivity(), "CO2_Daten/total_emissions.json");
         try {
             JSONArray jObject = new JSONArray(json_string);
-            populateLineChart(root, jObject, Color.BLUE);
+            populateLineChart(root, R.id.line_chart, jObject, Color.BLUE);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        // Populate transport
+        populatePieChartTransport(root);
+        String json_string_transport = loadJSONFromAsset(getActivity(), "CO2_Daten/transportation_emission.json");
+        try {
+            JSONArray jObject = new JSONArray(json_string_transport);
+            populateLineChart(root, R.id.line_chart_transport, jObject, Color.BLUE);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -63,10 +69,63 @@ public class StatsFragment extends Fragment {
         return root;
     }
 
-    public void populatePieChart(View root) {
+    public void populatePieChartSummary(View root) {
         PieChartData data;
 
         pieChartView = root.findViewById(R.id.pie_chart);
+
+        //OPTIONS
+        boolean hasLabels = true;
+        boolean hasLabelsOutside = false;
+        boolean hasCenterCircle = true;
+        boolean isExploded = false;
+        boolean hasLabelForSelected = false;
+        // OPTIONS END
+
+        SliceValue tmpSlice;
+
+
+        List<SliceValue> values = new ArrayList<SliceValue>();
+
+        tmpSlice = new SliceValue(10, Color.RED);
+        tmpSlice.setLabel(("Transportation " + tmpSlice.getValue() + "%" ));
+        values.add(tmpSlice);
+
+        tmpSlice = new SliceValue(12, Color.GRAY);
+        tmpSlice.setLabel(("Food " + tmpSlice.getValue() + "%" ));
+        values.add(tmpSlice);
+
+        tmpSlice = new SliceValue(7, Color.MAGENTA);
+        tmpSlice.setLabel(("Consume " + tmpSlice.getValue() + "%" ));
+        values.add(tmpSlice);
+
+        tmpSlice = new SliceValue(25, Color.YELLOW);
+        tmpSlice.setLabel(("Streaming / devices " + tmpSlice.getValue() + "%" ));
+        values.add(tmpSlice);
+
+        tmpSlice = new SliceValue(48, Color.GREEN);
+        tmpSlice.setLabel(("Baseline " + tmpSlice.getValue() + "%" ));
+        values.add(tmpSlice);
+
+        data = new PieChartData(values);
+        data.setHasLabels(hasLabels);
+        data.setHasLabelsOnlyForSelected(hasLabelForSelected);
+        data.setHasLabelsOutside(hasLabelsOutside);
+        data.setHasCenterCircle(hasCenterCircle);
+
+        if (isExploded) {
+            data.setSlicesSpacing(50);
+        }
+
+        pieChartView.setPieChartData(data);
+
+
+    }
+
+    public void populatePieChartTransport(View root) {
+        PieChartData data;
+
+        pieChartView = root.findViewById(R.id.pie_chart_transport);
 
         //OPTIONS
         boolean hasLabels = true;
@@ -115,8 +174,8 @@ public class StatsFragment extends Fragment {
 
     }
 
-    public void populateLineChart(View root, JSONArray object, int color) {
-        lineChartView = root.findViewById(R.id.line_chart);
+    public void populateLineChart(View root, int obj_id , JSONArray object, int color) {
+        lineChartView = root.findViewById(obj_id);
 
         List<PointValue> values = new ArrayList<>();
 
@@ -127,7 +186,8 @@ public class StatsFragment extends Fragment {
 
 
         float max_y = Float.MIN_VALUE;
-        float min_y = Float.MAX_VALUE;
+//        float min_y = Float.MAX_VALUE;
+        float min_y = 0;
 
         float tmp_y_value;
         String tmp_y_date;
@@ -156,7 +216,7 @@ public class StatsFragment extends Fragment {
 
                 // Calc min max
                 max_y = Math.max(max_y, tmp_y_value);
-                min_y = Math.min(min_y, tmp_y_value);
+//                min_y = Math.min(min_y, tmp_y_value);
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -192,6 +252,15 @@ public class StatsFragment extends Fragment {
         Axis yAxis = new Axis(axisValuesForY);
         data.setAxisXBottom(xAxis);
         data.setAxisYLeft(yAxis);
+
+
+        Viewport viewport = lineChartView.getMaximumViewport();
+        viewport.set(0, 0, 0, 0);
+        lineChartView.setMaximumViewport(viewport);
+
+        viewport = lineChartView.getCurrentViewport();
+        viewport.set(0, 0,0, 0);
+        lineChartView.setCurrentViewport(viewport);
 
 
         lineChartView.setLineChartData(data);

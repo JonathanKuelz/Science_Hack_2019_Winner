@@ -29,8 +29,9 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
 
-    implementation 'net.cachapa.expandablelayout:expandablelayout:2.9.2'
     testImplementation 'junit:junit:4.12'
+    implementation 'com.alespero:expandable-cardview:0.8'
+
 
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
