@@ -2,8 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,12 +37,20 @@
                 android:padding="10dp" />
         </androidx.cardview.widget.CardView>
 
+        <!--        <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_weight="1" />-->
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
         <TextView
             android:id="@+id/text_pie_chart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_margin="5dp"
+            android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="@string/pie_chart"
             android:textStyle="bold" />
@@ -61,6 +69,21 @@
                 android:layout_below="@+id/text_pie_chart"
                 android:padding="10dp" />
         </androidx.cardview.widget.CardView>
+
+        <net.cachapa.expandablelayout.ExpandableLayout
+            android:id="@+id/expandable_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:el_duration="1000"
+            app:el_expanded="true"
+            app:el_parallax="0.5">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="Fixed height" />
+        </net.cachapa.expandablelayout.ExpandableLayout>
 
 
     </LinearLayout>
